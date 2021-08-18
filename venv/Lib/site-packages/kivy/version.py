@@ -1,0 +1,4 @@
+# THIS FILE IS GENERATED FROM KIVY SETUP.PY
+__version__ = '1.10.0'
+__hash__ = 'a4116a58d7c5448a4c6615021302375cbe3e129a'
+__date__ = '20170507'

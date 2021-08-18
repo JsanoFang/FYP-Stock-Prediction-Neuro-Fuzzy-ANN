@@ -1,0 +1,1170 @@
+<MyLayout>
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        size_hint: None, None
+
+
+        MDBottomNavigation:
+            size: root.width,root.height
+            anchor_x:'right'
+            anchor_y:'bottom'
+            MDBottomNavigationItem:
+
+                name: 'home'
+                text: 'Home'
+                icon: 'home'
+                on_enter:root.update_home()
+                MDToolbar:
+                    size_hint:(None,None)
+                    valign:'top'
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Dashboard"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:4
+                    rows:10
+                    Label:
+                        text: "Company Name"
+                        font_size: 17
+                        color:0,1,1,1
+                    Label:
+                        text:"Today's Stock Price (USD)"
+                        front_size:25
+                        color:0,1,1,1
+                    Label:
+                        text:"Profit/Loss (USD)"
+                        font_size:17
+                        color:0,1,1,1
+
+                    Label:
+                        text:"Bookmarked ?"
+                        front_size:25
+                        color:0,1,1,1
+
+                    Label:
+                        text:"Tesla"
+
+                    Label:
+                        id:home_prc_tesla
+                        text: ""
+
+                    Label:
+                        id:home_prof_tesla
+                        text: ""
+
+                    Label:
+                        id:home_book_tesla
+                        text: ""
+
+                    Label:
+                        text: "Sony"
+
+                    Label:
+                        id:home_prc_sony
+                        text: ""
+
+                    Label:
+                        id:home_prof_sony
+                        text: ""
+
+                    Label:
+                        id:home_book_sony
+                        text: ""
+                    Label:
+                        text: "LG"
+
+                    Label:
+                        id:home_prc_lg
+                        text: ""
+
+                    Label:
+                        id:home_prof_lg
+                        text: ""
+
+                    Label:
+                        id:home_book_lg
+                        text: ""
+                    Label:
+                        text: "Hyundai"
+
+                    Label:
+                        id:home_prc_hyundai
+                        text: ""
+
+                    Label:
+                        id:home_prof_hyundai
+                        text: ""
+
+                    Label:
+                        id:home_book_hyundai
+                        text: ""
+                    Label:
+                        text: "Google"
+
+                    Label:
+                        id:home_prc_google
+                        text: ""
+
+                    Label:
+                        id:home_prof_google
+                        text: ""
+
+                    Label:
+                        id:home_book_google
+                        text: ""
+                    Label:
+                        text: "Easterly Government Properties"
+                        font_size:13
+                    Label:
+                        id:home_prc_dea
+                        text: ""
+
+                    Label:
+                        id:home_prof_dea
+                        text: ""
+
+                    Label:
+                        id:home_book_dea
+                        text: ""
+
+                    Label:
+                        text: "Nintendo"
+
+                    Label:
+                        id:home_prc_nintendo
+                        text: ""
+
+                    Label:
+                        id:home_prof_nintendo
+                        text: ""
+
+                    Label:
+                        id:home_book_nintendo
+                        text: ""
+
+
+
+
+            MDBottomNavigationItem:
+                name: 'tesla'
+                text: 'Tesla'
+                icon: 'rocket-launch-outline'
+                on_enter:root.add_tesla_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    valign:'top'
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Tesla's Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_tesla
+                        on_active: root.checkbox_click(self,self.active,"TSLA")
+                    Button:
+                        id:view_trained_model_tesla
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("tesla")
+
+                    Button:
+                        id:view_stock_tesla
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("TSLA")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_tesla
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(1,stock_amt_tesla.text,stock_buy_prc_tesla.text)
+
+                    Label:
+                        text:"Tesla's Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_tesla
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_tesla
+                        font_size:20
+                    Button:
+                        id:predict_tesla
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_tesla.text,high_tesla.text,open_tesla.text,vol_tesla.text,adjcls_tesla.text,"tesla","TSLA")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+            MDBottomNavigationItem:
+                name: 'sony'
+                text: 'SONY'
+                icon: 'sony-playstation'
+                on_enter:root.add_sony_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    valign:'top'
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Sony's Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_sony
+                        on_active: root.checkbox_click(self,self.active,"SONY")
+                    Button:
+                        id:view_trained_model_sony
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("sony")
+
+                    Button:
+                        id:view_stock_sony
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("SONY")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_sony
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(2,stock_amt_sony.text,stock_buy_prc_sony.text)
+
+                    Label:
+                        text:"Sony Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_sony
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_sony
+                        font_size:20
+                    Button:
+                        id:predict_sony
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_sony.text,high_sony.text,open_sony.text,vol_sony.text,adjcls_sony.text,"sony","SONY")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+
+            MDBottomNavigationItem:
+                name: 'lg'
+                text: 'LG'
+                icon: 'television'
+                on_enter:root.add_lg_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    valign:'top'
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "LG's Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_lg
+                        on_active: root.checkbox_click(self,self.active,"LPL")
+                    Button:
+                        id:view_trained_model_lg
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("lg")
+
+                    Button:
+                        id:view_stock_lg
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("LPL")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_lg
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(3,stock_amt_lg.text,stock_buy_prc_lg.text)
+
+                    Label:
+                        text:"LG Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_lg
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_lg
+                        font_size:20
+                    Button:
+                        id:predict_lg
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_lg.text,high_lg.text,open_lg.text,vol_lg.text,adjcls_lg.text,"lg","LPL")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+
+            MDBottomNavigationItem:
+                name: 'hyundai'
+                text: 'Hyundai'
+                icon: 'car'
+                on_enter:root.add_hyundai_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Hyundai's Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_hyundai
+                        on_active: root.checkbox_click(self,self.active,"HYMTF")
+                    Button:
+                        id:view_trained_model_hyundai
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("hyundai")
+
+                    Button:
+                        id:view_stock_hyundai
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("HYMTF")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_hyundai
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(4,stock_amt_hyundai.text,stock_buy_prc_hyundai.text)
+
+                    Label:
+                        text:"Hyundai's Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_hyundai
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_hyundai
+                        font_size:20
+                    Button:
+                        id:predict_hyundai
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_hyundai.text,high_hyundai.text,open_hyundai.text,vol_hyundai.text,adjcls_hyundai.text,"hyundai","HYMTF")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+
+            MDBottomNavigationItem:
+                name: 'Google'
+                text: 'Google'
+                icon: 'google'
+                on_enter:root.add_google_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Google's Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_google
+                        on_active: root.checkbox_click(self,self.active,"GOOG")
+                    Button:
+                        id:view_trained_model_google
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("google")
+
+                    Button:
+                        id:view_stock_google
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("GOOG")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_google
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(5,stock_amt_google.text,stock_buy_prc_google.text)
+
+                    Label:
+                        text:"Google's Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_google
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_google
+                        font_size:20
+                    Button:
+                        id:predict_google
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_google.text,high_google.text,open_google.text,vol_google.text,adjcls_google.text,"google","GOOG")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+
+            MDBottomNavigationItem:
+                name: 'DEA'
+                text: 'DEA'
+                icon: 'image-filter-hdr'
+                on_enter:root.add_dea_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Easterly Government Properties' Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_dea
+                        on_active: root.checkbox_click(self,self.active,"DEA")
+                    Button:
+                        id:view_trained_model_dea
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("dea")
+
+                    Button:
+                        id:view_stock_dea
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("DEA")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_dea
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(6,stock_amt_dea.text,stock_buy_prc_dea.text)
+
+                    Label:
+                        text:"DEA's Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_dea
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_dea
+                        font_size:20
+                    Button:
+                        id:predict_dea
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_dea.text,high_dea.text,open_dea.text,vol_dea.text,adjcls_dea.text,"dea","DEA")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+
+            MDBottomNavigationItem:
+                name: 'nintendo'
+                text: 'Nintendo'
+                icon: 'space-invaders'
+                on_enter:root.add_nintendo_history()
+                MDToolbar:
+                    size_hint:(None,None)
+                    size: root.width,50
+                    anchor_y:'top'
+                    anchor_x:'right'
+                    title: "Nintendo's Stock Prediction"
+                    font_size:32
+
+                GridLayout:
+                    row_default_height: '30dp'
+
+                    cols:2
+                    rows:15
+                    Label:
+                        text: "Bookmark"
+                        font_size: 20
+                    CheckBox:
+                        id:box_nintendo
+                        on_active: root.checkbox_click(self,self.active,"NTDOY")
+                    Button:
+                        id:view_trained_model_nintendo
+                        text:"View Trained Model"
+                        height: 30
+                        width: 250
+                        on_press: root.show_trained("nintendo")
+
+                    Button:
+                        id:view_stock_nintendo
+                        text:"View Today's Stock Data"
+                        height: 30
+                        width: 250
+                        on_press: root.show_stock_now("NTDOY")
+
+
+                    Label:
+                        text:"Input Amount of Stock Purchased"
+
+                    TextInput:
+                        id:stock_amt_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                        text:"Input Price of stock when Purchased"
+
+                    TextInput:
+                        id:stock_buy_prc_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+                    Label:
+                    Button:
+                        id:save_stock_buy_nintendo
+                        text:"Save Information"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press: root.update_buy(7,stock_amt_nintendo.text,stock_buy_prc_nintendo.text)
+
+                    Label:
+                        text:"Nintendo's Data Needed for Prediction Model"
+                        front_size:20
+
+                    Label:
+                        size_hint: (None, None)
+                        width:0
+                        height:0
+
+                    Label:
+                        text: "Input High Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:high_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Low Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:low_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Open Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:open_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Volume Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:vol_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        text: "Input Adjusted Close Value of Stock"
+                        font_size: 20
+
+                    TextInput:
+                        id:adjcls_nintendo
+                        size_hint: (None, None)
+                        height: 30
+                        width: 350
+                        multiline: False
+
+                    Label:
+                        id:result_nintendo
+                        font_size:20
+                    Button:
+                        id:predict_nintendo
+                        text:"Predict"
+                        size_hint: (None, None)
+                        height: 30
+                        width: 250
+                        on_press:root.button_predict_stock(low_nintendo.text,high_nintendo.text,open_nintendo.text,vol_nintendo.text,adjcls_nintendo.text,"nintendo","NTDOY")
+                    Label:
+                        size_hint: (None, None)
+                        width: 300
+                        height: 1
+

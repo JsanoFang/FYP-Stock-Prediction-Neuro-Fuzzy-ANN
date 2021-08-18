@@ -1,0 +1,7 @@
+Please run below command in Command Prompt 
+
+pip install matplotlib==3.2.2 kivy==2.0.0 kivymd==0.104.2 numpy==1.17.3 pandas==0.25.2 pickle-mixin scikit-fuzzy==0.4.2 yahoofinancials
+
+System may encounter Error 
+if pandas, numpy, and matplotlib versions 
+are different from the version installed above
